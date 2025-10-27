@@ -1,4 +1,4 @@
-# RestTest
+# WebSocketTest
 
 - new - spring legacy project - spring mvc project
 - project name: `WebSocketTest`
@@ -14,30 +14,19 @@
 - 맨 아래쪽 plugin 태그 -> maven plugin 내부
   - configuration 태그 내부 source, target 내부 11로 변경
 
----
-
-### WebSocket, 웹소켓
-- Socket(소켓): 네트워크 상에서 호스트 간의 데이터를 주고 받는 규약(인터페이스)
-  - 자바: 소켓 인터페이스 구현 -> 자바 소켓 클래스
-  - C#: 소켓 인터페이스 구현 -> C# 소켓 클래스
-- WebSocket : WS 프로토콜을 기반으로 웹 클라이언트(JavaScript)와 서버(Servlet, Spring, ASP.NET 등... ) 사이에 통신을 제공하는 기술
-  - 소켓에 비해 쉽고 간결하게 구현
-
----
-
----
+<!-- ---
 
 #### 파일, 패키지
 
 ##### src/main/java - Controller
-- com.test.rest.controller
+- com.test.socket.controller
   - `AddressController.java`
-- com.test.rest.model
+- com.test.socket.model
   - `AddressDAO.java`
   - `AddressDTO.java`
 
 ##### src/main/webapp - View
-- WEB-INF/views: 만들지 않는다.(REST 환경은 Json을 반환하므로)
+- WEB-INF/views: 만들지 않는다.(REST 환경은 Json을 반환하므로) -->
 
 
 
