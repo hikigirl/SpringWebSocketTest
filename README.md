@@ -13,22 +13,27 @@
 - 그 아래 스프링 버전 5.0.7.RELEASE로
 - 맨 아래쪽 plugin 태그 -> maven plugin 내부
   - configuration 태그 내부 source, target 내부 11로 변경
+- 의존성 추가 필요
+  - Lombok, WebSocket, gson
 
-<!-- ---
+---
 
 #### 파일, 패키지
 
 ##### src/main/java - Controller
 - com.test.socket.controller
-  - `AddressController.java`
-- com.test.socket.model
-  - `AddressDAO.java`
-  - `AddressDTO.java`
+  - `SocketController.java`: jsp 띄우기 용(그냥 컨트롤러)
+- com.test.socket.server
+  - `SocketServer.java`: 서버
 
 ##### src/main/webapp - View
-- WEB-INF/views: 만들지 않는다.(REST 환경은 Json을 반환하므로) -->
+- WEB-INF/views
+  - `test.jsp`: 클라이언트
 
-
+---
+- 1:1 통신 예시
+- 서버: 스프링
+- 클라이언트: 자바스크립트
 
 
 
