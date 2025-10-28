@@ -93,7 +93,7 @@ public class ChatServer {
 					e.printStackTrace();
 				}
 			}
-		} else if (mdto.getCode().equals("3")) {
+		} else if (mdto.getCode().equals("3") || mdto.getCode().equals("5")) {
 			//누군가가 전역 메세지를 전송했을 때 => 모든 사람에게 전달
 			for (User s :sessionList) {
 				if(s.session!=session) {
@@ -116,7 +116,7 @@ public class ChatServer {
 					break;
 				}
 			}
-		}
+		} 
 		
 	}
 	@OnError

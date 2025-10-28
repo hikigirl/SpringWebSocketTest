@@ -204,6 +204,8 @@
 					print(message.sender, message.content, 'other', 'msg', message.regdate);
 				} else if (message.code == '4') {
 					print(message.sender, message.content, 'other', 'secret', message.regdate);
+				} else if (message.code == '5') {
+					printEmoticon(message.sender, message.content, 'other', 'msg', message.regdate);
 				}
 				scrollList();
 			};
@@ -237,6 +239,22 @@
 			$('#list').append(temp);
 			
 		}
+		function printEmoticon(name, msg, side, state, time) {
+			let temp = `
+				<div class="item \${state} \${side}">
+					<div>
+						<div>\${name}</div>
+						<div style='background-color: #FFF;border: 0;'><img src='/socket/resources/emoticon/\${msg.substr(1)}.png'></div>
+					</div>
+					<div>\${time}</div>
+				</div>		
+				`;
+				
+			$('#list').append(temp);
+			
+			//scrollList();
+			setTimeout(scrollList, 100);
+		}
 		
 		function disconnect() {
 			// 현재 사용자 나가기
@@ -269,7 +287,8 @@
 		$('#msg').keydown(evt => {
 			if(evt.keyCode==13){
 
-				const regex = /^\/\S{1,}/;
+				const regex = /^\/\S{1,}/;			//귓속말
+				const regex2 = /^#[가-힣]{1,}$/;	//이모티콘
 				//console.log(regex.test($(evt.target).val()));
 				
 				if(regex.test($(evt.target).val())) {
@@ -287,6 +306,21 @@
 					
 					$(evt.target).val('').focus();
 					scrollList();
+				} else if (regex2.test($(evt.target).val())) {
+					//이모티콘
+					const message = {
+						code: '5',
+						sender: username,
+						receiver: '',
+						content: $(event.target).val(),
+						regdate: dayjs().format('YYYY-MM-DD HH:mm:ss')
+					};
+					ws.send(JSON.stringify(message));
+					
+					printEmoticon(message.sender, message.content, 'me', 'msg', message.regdate);
+					
+					$(evt.target).val('').focus();
+					//scrollList();
 				} else {
 					//일반 텍스트 메세지
 					const message = {
